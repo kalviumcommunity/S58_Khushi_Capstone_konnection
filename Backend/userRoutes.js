@@ -1,14 +1,14 @@
 const express = require('express');
 const dotenv = require('dotenv')
-dotenv.config()
+dotenv.config();
 const usersRouter = express.Router();
-const {usersModel}= require('./Model/users')
-const UsersData = require('./Config/UsersData.json')
+const {usersModel}= require('./Model/users');
+const UsersData = require('./Config/UsersData.json');
 
 
 
 
-//Create : Add all user
+//Create : Add all user data to mongodb
 usersRouter.post('/postUsers',(req,res)=>{
     usersModel.insertMany(UsersData)
     .then((result) => {
