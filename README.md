@@ -1,4 +1,4 @@
-# Capstone => Konnection
+# Konnection
 
 ## Overview
 
