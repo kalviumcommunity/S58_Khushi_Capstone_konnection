@@ -7,10 +7,81 @@
         "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
     },
     {
-        "username": "Khushi Nian",
+        "username": "Khushi Nain",
         "squad": "58",
         "bio": "",
         "email": "khushi.nain@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    },
+    {
+        "username": "Aiman Singh",
+        "squad": "58",
+        "bio": "",
+        "email": "aiman.singh@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+
+    },
+    {
+        "username": "Harshwardhan Dhoble",
+        "squad": "58",
+        "bio": "",
+        "email": "harshwardhan.dhoble@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    }
+    ,{
+        "username": "Ayush Singh",
+        "squad": "58",
+        "bio": "",
+        "email": "ayush.singh@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    },
+    {
+        "username": "Ashiraj Singh",
+        "squad": "58",
+        "bio": "",
+        "email": "adhiraj.singh@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    }
+    ,{
+        "username": "Aditi Vashishtha",
+        "squad": "58",
+        "bio": "",
+        "email": "aditi.vashishtha@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    }
+    ,{
+        "username": "Nimish Garg",
+        "squad": "58",
+        "bio": "",
+        "email": "nimish.garg@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    },
+    {
+        "username": "Ram Nathawat",
+        "squad": "58",
+        "bio": "",
+        "email": "ram.nathawat@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    },
+    {
+        "username": "Abhishek Chaudhari",
+        "squad": "58",
+        "bio": "",
+        "email": "abhishek.chaudhari@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    }
+    ,{
+        "username": "Yashvardhan Dadhich",
+        "squad": "58",
+        "bio": "",
+        "email": "yashvardhan.dadhich@kalvium.community",
+        "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
+    },
+    {
+        "username": "Vedant Yaduvanshi",
+        "squad": "58",
+        "bio": "",
+        "email": "vedant.yaduvanshi@kalvium.community",
         "pfp_url" : "https://i.pinimg.com/736x/66/ff/cb/66ffcb56482c64bdf6b6010687938835.jpg"
     }
 ]
