@@ -1,0 +1,15 @@
+[
+    {
+        "username": "Anushka",
+        "password": "anushakapass",
+        "email": "anushka.bhatt@kalvium.community"
+    },{
+        "username": "Aditi",
+        "password": "aditipass",
+        "email": "aditi.vashishtha@kalvium.community"
+    },{
+        "username":"Khushi",
+        "password": "khushipass",
+        "email": "khushi.nain@kalvium.community"
+    }
+]
