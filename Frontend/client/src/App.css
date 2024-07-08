@@ -1,42 +1,310 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Briem+Hand:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap');
+*{
+    padding: 0;
+    margin: 0%;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+}
+.align-centre{
+    align-items: center;
+}
+.justify-centre{
+    justify-content: center;
+}
+.flex-dir{
+    flex-direction: column;
+}
+Link{
+    text-decoration: none;
+}
+.home-pg{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./assets/tinywow_sample1.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #8D5D2A;
+    font-family: "Akaya Kanadaka", system-ui;
+    font-weight: 600;
+    font-size: 32px;
+}
+.circle-belt{
+    justify-content: space-around;
+    width: 100vw;
+    height: 60vh;
+}
+.home-req-box{
+    background-image: url(./assets/circle1.png);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 32vh;
+    width: 15vw;
+    text-decoration: none;
+    color: white;
+}
+.border{
+    border: 2px solid red;
+}
+.home-profile-box{
+    background-image: url(./assets/circle1.png);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 32vh;
+    width: 15vw;
+    text-decoration: none;
+    color: white;
+    
+}
+.select-squad-bx{
+    background-image: url(./assets/select.png);
+    height: 25vh;
+    width: 24vw;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding-top: 10px;
+}
+.selection-bx{
+    background-image: url(./assets/option_up_bx.png);
+    height: 23vh;
+    width: 35vw;
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+.lower-sel-bx{
+    background-image: url(./assets/option_down_bx.png);
+}
+.squad-tile{
+    background-color: #8D5D2A60;
+    border: 2px solid #B37739;
+    color: #B37739;
+    width: 22vw;
+    padding-block: 8px;
+}
+.selection-bxs{
+    height: 70vh;
+    justify-content: space-between;
+}
+.squads-tile{
+    height: 50vh;
+    overflow-y:auto;
+    position:absolute;
+    bottom:15vh;
+}
+.squads-tile::-webkit-scrollbar {
+    display: none;
+}
+.user-pfp{
+    background-image: url(./assets/frame.png);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 250px;
+    width: 200px;
+
+}
+.user-pfp img{
+    height: 190px;
+    width: 145px;
+}
+.user-block{
+    width: fit-content;
+    text-align: center;
+    color: white;
+}
+.selectedUsers{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20vh;
+    height: 53vh;
+    margin: 10vw;
+    overflow-y:auto;
+    justify-content: space-around;
+}
+.selectedUsers::-webkit-scrollbar {
+    display: none;
+}
+                                            /* User display page */
+.user-pg{
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-between;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('./assets/Aksample.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: White;
+    font-family: "Akaya Kanadaka", system-ui;
+    font-weight: 600;
+    font-size: 32px;
+    padding-block: 5vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.user-under{
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('./assets/Heading.png');
+    height: 30px;
+    width: 300px;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.konnect-btn{
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2)),url('./assets/btn.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    font-size: 24px;
+    color: white;
+    padding: 20px 54px;
+    margin-bottom: 5vh;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.bio-display{
+    margin-left: 25vw;
+    width: 40vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.user-mid-sec{
+    width: 100vw;
+    padding-inline: 10vw;
+}
+                                     /* User-Profile-page */
+
+.save-btn{
+    padding: 9px 70px;
+}
+.divider{
+    background-color: white;
+    height: 3px;
+    width: 100%;
+    margin-block: 5px;
+}
+textarea{
+    width: 100%;
+    height: 20vh;
+    background-color: rgba(255, 255,255, 0.1);
+    font-size: 24px;
+    padding: 5px;
+    color: white;
+    border: none;
+    box-shadow: inset 0px 0px 10px 10px rgba(255, 255,255, 0.1);
+}
+.bio-heading{
+    background-color: rgba(255, 255,255, 0.1);
+    box-shadow: inset 0px 0px 10px 10px rgba(255, 255,255, 0.1);
+    padding: 10px;
+    font-size: 26px;
+    border-radius: 5px;
+}
+.pfp-upload{
+    background-color: #bd8b59;
+    height: 190px;
+    width: 145px;
+    text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+                                    /* Requests received page */
+.request-bg{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('./assets/Aksample.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: White;
+    font-family: "Akaya Kanadaka", system-ui;
+    font-weight: 600;
+    font-size: 32px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+                                            /* logIn page */
+.right-login{
+    width: 30vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./assets/loginbg.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    color: white;
+    font-family: "Akaya Kanadaka", system-ui;
+    justify-content: space-around;
+    padding-block: 30vh;
 }
-
-.card {
-  padding: 2em;
+.right-login p{
+    font-family: "Jaldi", sans-serif;
+    letter-spacing: 1px;
 }
+.left-login{
+    width: 70vw;
+    padding: 10vh;
+    height: 100vh;
+    background-color: #FFEFD9; 
+    justify-content: space-around;
+}
+.left-login h1{
+    color: #B29469;
+    font-family: "Jaldi", sans-serif;
+}
+.logo{
+    color: #A58763;
+    font-family: "Jolly Lodger", system-ui;
+    font-size: 32px;
+    margin: 10px;
+    position:absolute;
+    top:0%;
+    left:0%;
+}
+.logo::first-letter{
+    color: black;
+    font-size: larger;
+}
+.signIn div{
+    width: 80px;
+    height: 4px;
+    background-color: #735552;
+}
+input{
+    border: 3px solid #735552;
+    padding: 4px 30px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-family: "Jaldi", sans-serif;
+    width: 25vw;
+    margin-block: 20px;
+    background-color: transparent;
+}
+.main-btn{
+    background-color: #B29469;
+    color: white;
+    font-family: "Akaya Kanadaka", system-ui;
+    padding: 10px 40px;
+    border: none;
+    font-size: 24px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.side-btn{
+    font-family: "Akaya Kanadaka", system-ui;
+    padding: 10px 40px;
+    border: 3px solid white;
+    color: white;
+    font-size: 24px;
+    border-radius: 50px;
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+    background-color: transparent;
 
-.read-the-docs {
-  color: #888;
+}
+.or-divider div{
+    width: 100px;
+    height: 7px;
+    background-color: #735552;
+}
+.or-divider span{
+    font-size: 28px;
+    margin-inline: 20px;
 }
