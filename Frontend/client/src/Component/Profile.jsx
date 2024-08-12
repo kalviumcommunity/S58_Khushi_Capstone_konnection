@@ -17,7 +17,7 @@ export default function profile() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [])
 
   const handleSave=()=>{
     axios.put(`http://localhost:8080/user/${id}/bio`,{bio}).then((res)=>{

@@ -8,8 +8,7 @@ export default function Requests() {
     <div className='request-bg'>
       <Link to={`home`}>
         <button>back</button>
-      </Link>
-       
+      </Link>   
     </div>
-
   )}
+  

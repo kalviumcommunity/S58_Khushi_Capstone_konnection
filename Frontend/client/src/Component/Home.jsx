@@ -33,10 +33,7 @@ export default function Home() {
     const current = users.filter(ele=> ele.email===email )
     // setCurrentUser(current)
     console.log(current, email)
-    navigate(`/profile/${current[0]._id}`)
-  }
-
-  
+    navigate(`/profile/${current[0]._id}`)}
 
   const handleSquad = (squad) => {
     setDisplayingUser(true);
