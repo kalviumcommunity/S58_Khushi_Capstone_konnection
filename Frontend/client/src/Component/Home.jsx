@@ -14,24 +14,18 @@ export default function Home() {
   const Squads = [43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61];
   const email = localStorage.getItem('konnection.email')
   console.log(email)
-  
-
-
-
   useEffect(() => {
     axios.get('http://localhost:8080/Users/')
       .then((response) => {
-        setUsers(response.data);
-        console.log(response.data);
+        setUsers( response.data) ;
+        console.log(response.data) ;
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
+  }, [] ); 
   const handleProfile=()=>{
-    const current = users.filter(ele=> ele.email===email )
-    // setCurrentUser(current)
+    const current=users.filter(ele=> ele.email===email )
     console.log(current, email)
     navigate(`/profile/${current[0]._id}`)}
 
@@ -73,14 +67,14 @@ export default function Home() {
                   <div className='upper-sel-bx selection-bx'></div>
                   <div className='lower-sel-bx selection-bx'></div>
                 </div>
-                <div className='squads-tile'>
-                  {Squads.map((squad) => (
-                    <div key={squad} onClick={() => handleSquad(squad)}>
-                      <div className='squad-tile flex align-centre justify-centre'>
-                        Squad {squad}
+                <div  className='squads-tile'>
+                    { Squads.map((squad) => (
+                      <div key={squad} onClick={() => handleSquad(squad)}>
+                        <div className='squad-tile flex align-centre justify-centre'>
+                          Squad {squad}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))} 
                 </div>
               </div>
             </div>
