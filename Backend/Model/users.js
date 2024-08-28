@@ -9,4 +9,3 @@ const userSchema = mongoose.Schema({
 mongoose.pluralize(null)
 const usersModel = mongoose.model("users",userSchema)
 module.exports = {usersModel}
-// npm create vite@latest
