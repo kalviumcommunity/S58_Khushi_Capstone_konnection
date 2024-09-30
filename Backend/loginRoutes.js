@@ -7,8 +7,8 @@ const loginData = require('./Config/LogInData.json')
 const UsersData = require('./Config/UsersData.json');
 const Joi = require('joi');
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken');
 const secretKey = process.env.SECRET_KEY
+const  jwt =  require('jsonwebtoken');
 
 // signup Validate
 const signUpSchema = Joi.object({
@@ -73,7 +73,10 @@ LoginRouter.post('/signUp', async (req, res) => {
         
         if( member==null){
           const result = await LogInModel.insertMany(data)
-          res.json(result); 
+          const payload = { username: data.username, id: result._id };
+          const token = jwt.sign(payload, secretKey);
+          // res.json(result); 
+          res.status(201).json({ token });
         }else{
           res.json({error:"User Already Exist"})
         }
@@ -100,20 +103,24 @@ LoginRouter.post('/signUp', async (req, res) => {
       const {error,value}=signUpSchema.validate(validateData)
       if (error){
         console.log("Invalid request")
+        console.log("Invalid request");
+        return res.status(400).send("Invalid username or password format");
       }
       else{
         const members= await LogInModel.find()
         const member = members.find(member=> member.username === req.body.username)
         console.log(member)
-        if( member==null){
-          return res.status(400).send("User dont exist")
-        }
+        // if( member==null){
+        //   return res.status(400).send("User dont exist")
+        // }
         try{
-          if(await bcrypt.compare(req.body.password, member.password)){
-            const token = jwt.sign(member.username, secretKey);
-            res.send(member,token)
+          if(member && (await bcrypt.compare(req.body.password, member.password))){
+            const payload = { username: member.username, id: member._id };
+            const token = jwt.sign(payload, secretKey);
+            res.send(token)
+            
           } else{
-            res.send("Invalid password")
+            return res.status(401).send("Invalid username or password");
           } 
         }catch(error){
           res.status(500).send()

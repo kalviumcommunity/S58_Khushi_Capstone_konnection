@@ -8,6 +8,7 @@ export default function profile() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [bio,setBio]=useState(data.bio)
+  // console.log(id)
 
   useEffect(() => {
     axios.get(`http://localhost:8080/user/${id}`).then((res) => {
