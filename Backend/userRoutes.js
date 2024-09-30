@@ -68,41 +68,36 @@ usersRouter.delete('/user/:id', async (req,res)=>{
       res.status(500).json({ error: 'Failed to delete the data' });
   }
 })
-
-// Updata : Updata bio and profile picture
-usersRouter.put('/user/:id/bio', async (req,res)=>{
+// updating the value of bio and profile
+usersRouter.put('/user/:id/update', async (req, res) => {
   try {
-    data = await usersModel.findById(req.params.id)
-    updatedData = await usersModel.findByIdAndUpdate(
-        req.params.id,
-        {
-          "bio": req.body.bio,
-        },
-        {new: true}
+    const updateFields = {};
+    
+    if (req.body.bio) {
+      updateFields.bio = req.body.bio;
+    }
+    
+    if (req.body.pfp_url) {
+      updateFields.pfp_url = req.body.pfp_url;
+    }
+
+    const updatedData = await usersModel.findByIdAndUpdate(
+      req.params.id,
+      updateFields,
+      { new: true }
     );
+
+    if (!updatedData) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
     res.json(updatedData);
   } catch (error) {
     console.log('Error updating the data:', error);
     res.status(500).json({ error: 'Failed to update the data' });
   }
-})
+});
 
-usersRouter.put('/user/:id/pfp', async (req,res)=>{
-  try {
-    data = await usersModel.findById(req.params.id)
-    updatedData = await usersModel.findByIdAndUpdate(
-        req.params.id,
-        {
-          "pfp_url": req.body.pfp_url,
-        },
-        {new: true}
-    );
-    res.json(updatedData);
-  } catch (error) {
-    console.log('Error updating the data:', error);
-    res.status(500).json({ error: 'Failed to update the data' });
-  }
-})
 
 // get a perticular user
 usersRouter.get('/user/:id', async (req,res)=>{
