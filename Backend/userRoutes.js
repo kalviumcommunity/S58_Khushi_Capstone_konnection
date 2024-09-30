@@ -87,7 +87,7 @@ usersRouter.put('/user/:id/bio', async (req,res)=>{
   }
 })
 
-usersRouter.post('/user/:id/pfp', async (req,res)=>{
+usersRouter.put('/user/:id/pfp', async (req,res)=>{
   try {
     data = await usersModel.findById(req.params.id)
     updatedData = await usersModel.findByIdAndUpdate(

@@ -32,7 +32,8 @@ export default function Login() {
       axios.post('http://localhost:8080/signUp', info)
     .then((response) => {
         console.log(response.data);
-        localStorage.setItem('konnection.email',response.data.email)
+        // localStorage.setItem('konnection.email',response.data.email)
+        localStorage.setItem('token',response.data.token)
         navigate('/home')
     })
     .catch((error) => {
@@ -45,7 +46,8 @@ export default function Login() {
     console.log(info)
     axios.post('http://localhost:8080/LogIn', info)
     .then((response) => {
-      localStorage.setItem('konnection.email',response.data.email)
+      // localStorage.setItem('konnection.email',response.data.email)
+      localStorage.setItem('token',response.data.token)
         navigate('/home')
         console.log(response.data);
     })
