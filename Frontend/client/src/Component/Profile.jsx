@@ -20,13 +20,20 @@ export default function profile() {
       });
   }, [])
 
-  const handleSave=()=>{
-    axios.put(`http://localhost:8080/user/${id}/bio`,{bio}).then((res)=>{
-      console.log(res.data)
-    }).catch((error)=>{
-      console.log("Error :", error)
-    })
-  }
+  const handleSave = () => {
+    if (bio !== data.bio) {
+      axios.put(`http://localhost:8080/user/${id}/update`, { bio })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+    } else {
+      console.log("No changes in bio, skipping the update request.");
+    }
+  };
+  
 
   return (
     // data && 
