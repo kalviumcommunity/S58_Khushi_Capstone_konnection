@@ -31,3 +31,5 @@ This capstone project is aimed to create a chatting platform for the Kalvians to
  - Collecting required database
 
 Frontend deployment link :- https://wonderful-semifreddo-e9203e.netlify.app/
+
+Backend deployment link :- https://s58-khushi-capstone-konnection-1-wvys.onrender.com/

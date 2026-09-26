@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config();
 const LoginRouter = express.Router();
 const {LogInModel}= require('./Model/login');
+
 const loginData = require('./Config/LogInData.json')
 const UsersData = require('./Config/UsersData.json');
 const Joi = require('joi');
@@ -17,9 +18,9 @@ const signUpSchema = Joi.object({
     email: Joi.string().email() 
 })
 
-
 // Adding all user Logged into login database
 LoginRouter.post('/postlogged',(req,res)=>{
+  
   LogInModel.insertMany(loginData)
   .then((result) => {
     res.send('Inserted ' + result.length + ' documents into the collection');
@@ -42,57 +43,43 @@ LoginRouter.delete('/deletelogged', async (req,res)=>{
 }
 })
 
-
-
-
 // POSt : SIGNUP
 LoginRouter.post('/signUp', async (req, res) => {
-  const email=req.body.email
-  console.log(email)
-  if(UsersData.some(e=>e.email==email)){
-    try{
+  try {
+      // Validate the input
+      const { error, value } = signUpSchema.validate(req.body);
+      if (error) {
+          return res.status(400).json({ error: error.details[0].message });
+      }
+      const { username, password, email } = req.body;
+      // Checking if it is kalvium email 
+      const KalviumEmail = UsersData.some(e => e.email === email);
+      const AlreadyEmail = await LogInModel.findOne({ email });
+      if (!KalviumEmail || AlreadyEmail){
+          return res.status(400).json({ error: 'Not a valid kalvium mail' });
+      }
+      // Check if username already exists
+      const member = await LogInModel.findOne({ username });
+      if (member) {
+          return res.status(400).json({ error: "Username already exists" });
+      }
+      // Hashing the password
       const salt = await bcrypt.genSalt();
-      const hashedPassword= await bcrypt.hash(req.body.password, salt);
-      const data = {
-        "username": req.body.username,
-        "password": hashedPassword,
-        "email": req.body.email
-      }
-      const validateData = {
-        "username": req.body.username,
-        "password": req.body.password,
-        "email": req.body.email
-      }
-      const {error,value}=signUpSchema.validate(validateData)
-      if (error){
-        console.log("Invalid request", error)
-      }
-      else{
-        const members= await LogInModel.find()
-        const member = members.find(member=> member.username === req.body.username)
-        
-        if( member==null){
-          const result = await LogInModel.insertMany(data)
-          const payload = { username: data.username, id: result._id };
-          const token = jwt.sign(payload, secretKey);
-          // res.json(result); 
-          res.status(201).json({ token });
-        }else{
-          res.json({error:"User Already Exist"})
-        }
-      }
-    } catch (error) {
+      const hashedPassword = await bcrypt.hash(password, salt);
+      // insert new user into logIn database
+      const newUser = { username, password: hashedPassword, email };
+      const result = await LogInModel.insertMany(newUser);
+      // creating token
+      const payload = { username: newUser.username, id: result._id };
+      const token = jwt.sign(payload, secretKey);
+      res.status(201).json({ token });
+
+  } catch (error) {
       console.log('Error posting the data:', error);
       res.status(500).json({ error: 'Failed to post the data' });
-    }
-  }else{
-    console.log("Invalid email")
-    res.status(400).json({ error: 'Invalid email' });
   }
+});
 
-
-    
-  })
   // LOGIN For user
   LoginRouter.post('/LogIn', async (req, res) => {
       const validateData = {
@@ -103,21 +90,16 @@ LoginRouter.post('/signUp', async (req, res) => {
       const {error,value}=signUpSchema.validate(validateData)
       if (error){
         console.log("Invalid request")
-        console.log("Invalid request");
         return res.status(400).send("Invalid username or password format");
       }
       else{
-        const members= await LogInModel.find()
-        const member = members.find(member=> member.username === req.body.username)
+        const member = await LogInModel.findOne({ username: req.body.username });
         console.log(member)
-        // if( member==null){
-        //   return res.status(400).send("User dont exist")
-        // }
         try{
           if(member && (await bcrypt.compare(req.body.password, member.password))){
             const payload = { username: member.username, id: member._id };
             const token = jwt.sign(payload, secretKey);
-            res.send(token)
+            res.json({ token,email: member.email  });
             
           } else{
             return res.status(401).send("Invalid username or password");
@@ -129,4 +111,4 @@ LoginRouter.post('/signUp', async (req, res) => {
       }
   })
 
-  module.exports={LoginRouter}
+  module.exports={LoginRouter} 

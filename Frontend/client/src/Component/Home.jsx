@@ -5,33 +5,38 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
+  
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectSquad, setSelectSquad] = useState(false);
-  const [displayingUser, setDisplayingUser] = useState(false);
-  // const [currentUser, setCurrentUser]=useState('')
+  const [displayingUser, setDisplayingUser] = useState(false);  
   const navigate = useNavigate()
   const Squads = [43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61];
   const email = localStorage.getItem('konnection.email')
   console.log(email)
-  useEffect(() => {
-    axios.get('http://localhost:8080/Users/')
+  
+
+  // move to profile page
+  const handleProfile=()=>{ 
+    axios.get(`https://konnection.onrender.com/Users/${email}`)
       .then((response) => {
-        setUsers( response.data) ;
-        console.log(response.data) ;
+        navigate(`/profile/${response.data._id}`)
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [] ); 
-  const handleProfile=()=>{
-    const current=users.filter(ele=> ele.email===email )
-    console.log(current, email)
-    navigate(`/profile/${current[0]._id}`)}
+  } 
 
+  // display data according to selected squad number
   const handleSquad = (squad) => {
     setDisplayingUser(true);
-    setFilteredUsers(users.filter((user) => user.squad === squad));
+    axios.get(`https://konnection.onrender.com/Users/squad/${squad}`)
+      .then((response) => {
+        setFilteredUsers( response.data) ;
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

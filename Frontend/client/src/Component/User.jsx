@@ -9,7 +9,7 @@ export default function User() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/user/${id}`).then((res) => {
+    axios.get(`https://konnection.onrender.com/user/${id}`).then((res) => {
         setData(res.data);
       })
       .catch((error) => {

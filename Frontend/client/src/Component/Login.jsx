@@ -13,7 +13,6 @@ export default function Login() {
     password:"",
     email:"",
   })
- 
 
   const handleInfoChange = (e, field) => {
     if (field === "username") {
@@ -26,13 +25,14 @@ export default function Login() {
       setInfo({ ...info, email: e.target.value })
     }
   }
+
   const handleSignUp=()=>{
     console.log(info)
     if (cPass== info.password){
-      axios.post('http://localhost:8080/signUp', info)
+      axios.post('https://konnection.onrender.com/signUp', info)
     .then((response) => {
-        console.log(response.data);
-        // localStorage.setItem('konnection.email',response.data.email)
+        
+        localStorage.setItem('konnection.email',info.email)
         localStorage.setItem('token',response.data.token)
         navigate('/home')
     })
@@ -44,20 +44,17 @@ export default function Login() {
 
   const handleSignIn=()=>{
     console.log(info)
-    axios.post('http://localhost:8080/LogIn', info)
+    axios.post('https://konnection.onrender.com/LogIn', info)
     .then((response) => {
-      // localStorage.setItem('konnection.email',response.data.email)
+      console.log(response.data)
+      localStorage.setItem('konnection.email',response.data.email)
       localStorage.setItem('token',response.data.token)
+
         navigate('/home')
-        console.log(response.data);
     })
     .catch((error) => {
         console.log(error);
     });}
-
-  
-
-
 
   return (
     <div className='flex'>
@@ -72,7 +69,7 @@ export default function Login() {
         <input value={info.username}  onChange={(e)=>handleInfoChange(e,"username")} type='text' placeholder='Username' className="username"></input>
         <input value={info.password}  onChange={(e)=>handleInfoChange(e,"password")} type='password' placeholder='Password' className='password'></input>
         {logIn?<div></div>:<div>
-          <input value={cPass} type='password' placeholder='Confirm Password' className='c-password' onChange={(e)=>{setCpass(e.target.value)}}/>
+          <input value={cPass} type='password' placeholder='Confirm Password' className='c-password' onChange={(e)=>{setCpass(e.target.value)}}/> <br />
           <input value={info.email} type="email" placeholder='Kalvium mail' className='email' onChange={(e)=>{handleInfoChange(e,"email")}} />
         </div>}
           

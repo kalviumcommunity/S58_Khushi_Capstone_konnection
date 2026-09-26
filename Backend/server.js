@@ -6,14 +6,15 @@ const cors = require('cors');
 const port = process.env.PUBLIC_PORT;
 const {connection} = require('./Config/dbConnect')
 const {usersRouter} = require('./userRoutes')
-const {LoginRouter} = require('./loginRoutes')
+const {LoginRouter} = require('./loginRoutes');
+const { default: mongoose } = require('mongoose');
 
 
 app.use(express.json())
 app.use(cors())
 
 app.get('/',(req,res)=>{
-    res.send("hello world")  
+    res.send("hello world ")  
 }) 
 app.use('/',usersRouter)
 app.use('/',LoginRouter)
