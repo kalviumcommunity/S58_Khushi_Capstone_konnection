@@ -110,6 +110,12 @@ Link{
     width: 200px;
 
 }
+.user-pfp input{
+    border-radius: 0%;
+    padding:6%;
+    padding-top: 40%;
+
+}
 .user-pfp img{
     height: 190px;
     width: 145px;
